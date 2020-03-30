@@ -1,13 +1,16 @@
 const express = require('express');
 const routes = require('./routes');
 const cors = require('cors');
+const { errors } = require('celebrate');
 
 const app = express(); //instanciando meu app
 
 app.use(cors());
 app.use(express.json()); //informar o express converter o json pra obj
 app.use(routes);
-app.listen(3333); //ouvindo a porta 3333
+app.use(errors());
+
+module.exports = app;
 
 /*
     Tipos de parâmetros
